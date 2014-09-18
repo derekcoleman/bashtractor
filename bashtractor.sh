@@ -28,6 +28,7 @@ while read URL
 do
 	echo -n $URL
 	curl -XPOST -H 'Content-Type: application/json' -s -d "{\"input\":{\"webpage/url\":\"$URL\"}}" "https://api.import.io/store/connector/$EXTRACTOR_GUID/_query?_user=$USER_GUID&_apikey=$API_KEY" >> $DATA_FILE
+	sleep 1
 	echo "" >> $DATA_FILE
 	echo " ...done"
 done < $URL_FILE
